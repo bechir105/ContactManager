@@ -2,6 +2,10 @@ import XCTest
 import CoreData
 @testable import ContactsManager
 
+fimport XCTest
+import CoreData
+@testable import ContactsManager
+
 final class ContactsManagerTests: XCTestCase {
 
     override func setUp() {
