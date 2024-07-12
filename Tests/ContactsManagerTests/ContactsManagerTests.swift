@@ -7,7 +7,8 @@ final class ContactsManagerTests: XCTestCase {
     func testRequestAccess() {
         let expectation = self.expectation(description: "Access Request")
 
-        let contactsManager = ContactsManager()
+        let mockStore = MockCNContactStore()
+        let contactsManager = ContactsManager(store: mockStore)
         contactsManager.requestAccess { result in
             switch result {
             case .success(let granted):
@@ -24,7 +25,9 @@ final class ContactsManagerTests: XCTestCase {
     func testFetchAllContacts() {
         let expectation = self.expectation(description: "Fetch Contacts")
 
-        let contactsManager = ContactsManager()
+        let mockStore = MockCNContactStore()
+        mockStore.contacts = [CNContact()] // Add mock contacts as needed
+        let contactsManager = ContactsManager(store: mockStore)
         contactsManager.fetchAllContacts { result in
             switch result {
             case .success(let contacts):
