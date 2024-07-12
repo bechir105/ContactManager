@@ -1,4 +1,6 @@
 import Contacts
+@testable import ContactsManager
+
 
 class MockCNContactStore: ContactStoreProtocol {
     var granted: Bool = true
@@ -26,13 +28,3 @@ class MockCNContactStore: ContactStoreProtocol {
         // Handle add, update, and delete contact operations
     }
 }
-
-
-protocol ContactStoreProtocol {
-    func requestAccess(for entityType: CNEntityType, completionHandler: @escaping (Bool, Error?) -> Void)
-    func enumerateContacts(with fetchRequest: CNContactFetchRequest, usingBlock block: @escaping (CNContact, UnsafeMutablePointer<ObjCBool>) -> Void) throws
-    func unifiedContact(withIdentifier identifier: String, keysToFetch keys: [CNKeyDescriptor]) throws -> CNContact
-    func execute(_ saveRequest: CNSaveRequest) throws
-}
-
-extension CNContactStore: ContactStoreProtocol {}
