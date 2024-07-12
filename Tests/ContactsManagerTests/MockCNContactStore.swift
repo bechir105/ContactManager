@@ -1,13 +1,6 @@
-//
-//  File.swift
-//  
-//
-//  Created by Bechir Kefi on 12/7/2024.
-//
-
 import Contacts
 
-class MockContactStore: ContactStoreProtocol {
+class MockCNContactStore: ContactStoreProtocol {
     var granted: Bool = true
     var contacts: [CNContact] = []
 
@@ -34,6 +27,7 @@ class MockContactStore: ContactStoreProtocol {
     }
 }
 
+
 protocol ContactStoreProtocol {
     func requestAccess(for entityType: CNEntityType, completionHandler: @escaping (Bool, Error?) -> Void)
     func enumerateContacts(with fetchRequest: CNContactFetchRequest, usingBlock block: @escaping (CNContact, UnsafeMutablePointer<ObjCBool>) -> Void) throws
@@ -42,4 +36,3 @@ protocol ContactStoreProtocol {
 }
 
 extension CNContactStore: ContactStoreProtocol {}
-

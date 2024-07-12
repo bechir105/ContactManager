@@ -3,11 +3,11 @@ import Contacts
 
 public class ContactsManager {
 
-    private let store: CNContactStore
+    private let store: ContactStoreProtocol
 
-      public init(store: CNContactStore = CNContactStore()) {
-          self.store = store
-      }
+    public init(store: ContactStoreProtocol = CNContactStore()) {
+        self.store = store
+    }
 
     public func requestAccess(completion: @escaping (Result<Bool, Error>) -> Void) {
         store.requestAccess(for: .contacts) { granted, error in
