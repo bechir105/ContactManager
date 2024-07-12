@@ -15,8 +15,9 @@ public class CoreDataStack {
     private init() {}
 
     lazy var persistentContainer: NSPersistentContainer = {
-        let bundle = Bundle.module
-        guard let modelURL = bundle.url(forResource: "ContactsManagerModel", withExtension: "momd") else {
+        // Find the URL for the model in the package resources
+        let bundle = Bundle(for: CoreDataStack.self)
+        guard let modelURL = bundle.url(forResource: "ContactsManagerModel", withExtension: "momd", subdirectory: "ContactsManager_Sources/ContactsManager/Model") else {
             fatalError("Failed to locate Data Model in bundle.")
         }
         
@@ -49,4 +50,3 @@ public class CoreDataStack {
         }
     }
 }
-

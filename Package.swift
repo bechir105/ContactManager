@@ -23,7 +23,10 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "ContactsManager",
-            dependencies: []),
+            dependencies: [],
+            resources: [
+                           .process("Sources/ContactsManager/Model/ContactsManagerModel.xcdatamodeld")
+                       ]),
         .testTarget(
             name: "ContactsManagerTests",
             dependencies: ["ContactsManager"]),
