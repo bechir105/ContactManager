@@ -1,22 +1,8 @@
 import XCTest
-import CoreData
-@testable import ContactsManager
-
-fimport XCTest
-import CoreData
+import Contacts
 @testable import ContactsManager
 
 final class ContactsManagerTests: XCTestCase {
-
-    override func setUp() {
-        super.setUp()
-        // Optionally clear the database before each test
-    }
-
-    override func tearDown() {
-        // Optionally clear the database after each test
-        super.tearDown()
-    }
 
     func testRequestAccess() {
         let expectation = self.expectation(description: "Access Request")
